@@ -1,0 +1,186 @@
+/* --------------------------------------------------
+   Airlie Reef Project — main.css
+   Matches the design system of the Reef Rewards App
+-------------------------------------------------- */
+
+/* ------------------------------
+   0. Header
+------------------------------ */
+header {
+  background: var(--card);
+  color: var(--primary);
+  padding: 1rem;
+  text-align: center;
+  border-radius: var(--radius);
+  margin-bottom: 2rem;
+
+  /* Needed to place the badge cleanly */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+/* ------------------------------
+   0.1 $AIRLIE Badge
+------------------------------ */
+.badge-airlie {
+  background: var(--secondary);
+  color: var(--foreground);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+
+  /* Subtle coral glow */
+  box-shadow: 0 0 8px rgba(255, 111, 97, 0.45);
+
+  /* Smooth hover transition */
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+/* ✅ Hover effect */
+.badge-airlie:hover {
+  transform: scale(1.05); /* gentle lift */
+  box-shadow: 0 0 12px rgba(255, 111, 97, 0.65); /* slightly stronger glow */
+}
+
+/* Logo inside badge */
+.badge-airlie img {
+  height: 1rem;
+  width: auto;
+  display: block;
+  border-radius: 4px;
+}
+
+/* ------------------------------
+   1. Root Theme Variables
+------------------------------ */
+:root {
+  --background: #0D1B2A;        /* Deep ocean */
+  --foreground: #F5DEB3;        /* Sand beige */
+  --primary: #1DA1F2;           /* Reef blue */
+  --secondary: #FF6F61;         /* Coral accent */
+  --accent: #2ECC71;            /* Turtle green */
+  --card: #1B263B;              /* Dark reef rock */
+  --border: #33415C;
+  --radius: 12px;
+  --font-sans: "Inter", "Segoe UI", sans-serif;
+}
+
+/* ------------------------------
+   2. Global Reset
+------------------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ------------------------------
+   3. Typography
+------------------------------ */
+h1, h2 {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+h1 {
+  font-size: 2.4rem;
+  color: var(--primary);
+}
+
+h2 {
+  font-size: 1.6rem;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+h3 {
+  color: var(--secondary);   /* Coral accent */
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+/* ------------------------------
+   Strong text styling
+------------------------------ */
+strong {
+  color: var(--primary);   /* Reef blue */
+  font-weight: 700;
+}
+
+/* ------------------------------
+   4. Buttons
+------------------------------ */
+.btn {
+  background: var(--primary);
+  color: var(--foreground);
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+}
+
+.btn:hover {
+  background: var(--secondary);
+}
+
+/* ------------------------------
+   5. Lists
+------------------------------ */
+ul {
+  margin: 0.5rem 0 1.5rem 1.2rem;
+}
+
+li {
+  margin-bottom: 0.4rem;
+}
+
+/* ------------------------------
+   6. Horizontal Rule
+------------------------------ */
+hr {
+  border: none;
+  border-top: 2px solid var(--border);
+  margin: 1.5rem 0;
+}
+
+/* ------------------------------
+   7. Footer Signature
+------------------------------ */
+footer {
+  background: var(--card);
+  color: var(--foreground);
+  padding: 1rem;
+  text-align: center;
+  border-radius: var(--radius);
+  margin-top: 2rem;
+  border-top: 2px solid var(--border);
+  opacity: 0.85;
+}
