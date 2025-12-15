@@ -1,6 +1,6 @@
 /* --------------------------------------------------
    Airlie Reef Project — distri-model.css
-   Based on the Reef Rewards App design system
+   Extended with header + footer + document layout
 -------------------------------------------------- */
 
 /* ------------------------------
@@ -38,7 +38,54 @@ body {
 }
 
 /* ------------------------------
-   3. Typography
+   3. Header
+------------------------------ */
+header {
+  background: var(--card);
+  color: var(--foreground);
+  padding: 1rem 1.4rem;
+  text-align: center;
+  border-radius: var(--radius);
+  margin-bottom: 2.5rem;
+  border: 1px solid var(--border);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.7rem;
+
+  box-shadow: 0 0 12px rgba(0,0,0,0.35);
+}
+
+/* $AIRLIE Badge */
+.badge-airlie {
+  background: var(--secondary);
+  color: var(--foreground);
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  box-shadow: 0 0 10px rgba(255, 111, 97, 0.55);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.badge-airlie:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 14px rgba(255, 111, 97, 0.75);
+}
+
+.badge-airlie img {
+  height: 1.1rem;
+  width: auto;
+  border-radius: 4px;
+}
+
+/* ------------------------------
+   4. Typography
 ------------------------------ */
 h1, h2, h3 {
   font-weight: 700;
@@ -70,12 +117,11 @@ h3 {
 p {
   margin-bottom: 1rem;
   font-size: 1.1rem;
-  color: var(--foreground);
   opacity: 0.95;
 }
 
 /* ------------------------------
-   4. Lists
+   5. Lists
 ------------------------------ */
 ul {
   margin: 0.5rem 0 1.5rem 1.4rem;
@@ -87,7 +133,7 @@ li {
 }
 
 /* ------------------------------
-   5. Horizontal Rule
+   6. Horizontal Rule
 ------------------------------ */
 hr {
   border: none;
@@ -97,8 +143,7 @@ hr {
 }
 
 /* ------------------------------
-   6. Optional Section Cards
-   (Used to visually group content)
+   7. Section Cards (optional)
 ------------------------------ */
 section {
   background: var(--card);
@@ -110,15 +155,18 @@ section {
 }
 
 /* ------------------------------
-   7. Footer Signature (if used)
+   8. Footer
 ------------------------------ */
 footer {
   background: var(--card);
   color: var(--foreground);
-  padding: 1rem;
+  padding: 1.2rem;
   text-align: center;
   border-radius: var(--radius);
-  margin-top: 2rem;
+  margin-top: 3rem;
   border-top: 2px solid var(--border);
-  opacity: 0.85;
+  opacity: 0.9;
+
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
 }
