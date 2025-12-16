@@ -1,0 +1,425 @@
+/* --------------------------------------------------
+   ROOT VARIABLES — LIGHT MODE (DEFAULT)
+-------------------------------------------------- */
+:root {
+  --background: #F5DEB3;   /* Beige */
+  --foreground: #001A33;   /* Deep ocean blue */
+  --card: #F2D7A0;         /* Soft beige */
+  --muted: #4A5A6A;        /* Muted blue-gray */
+
+  --primary: #1DA1F2;      /* Reef blue */
+  --secondary: #FF6F61;    /* Coral */
+  --accent: #2ECC71;       /* Turtle green */
+
+  --radius: 0.75rem;
+  --spacing: 1rem;         /* New: For consistent margins/paddings */
+  --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* --------------------------------------------------
+   DARK MODE OVERRIDES
+-------------------------------------------------- */
+body.dark {
+  --background: #001A33;   /* Deep ocean blue */
+  --foreground: #F5DEB3;   /* Beige */
+  --card: #00264D;         /* Darker blue */
+  --muted: #CBBFA5;        /* Soft beige-gray */
+}
+
+/* --------------------------------------------------
+   BASE STYLES
+-------------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--background);
+  color: var(--foreground);
+  line-height: 1.6;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover, a:focus {
+  color: var(--secondary);
+  text-decoration: underline;
+}
+
+.page-content {
+  max-width: 1000px;
+  margin: calc(2 * var(--spacing)) auto calc(3 * var(--spacing));
+  padding: 0 var(--spacing);
+}
+
+/* --------------------------------------------------
+   HERO SECTION
+-------------------------------------------------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: calc(3 * var(--spacing)) var(--spacing) calc(4 * var(--spacing));
+  background: url("assets/reef.jpg") center/cover no-repeat;
+  background-attachment: fixed;
+  color: var(--foreground);
+}
+
+/* Gradient overlay - reduced opacity for better text visibility */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(245, 222, 179, 0.5), /* Lowered from 0.6 */
+    rgba(245, 222, 179, 0.8)  /* Lowered from 0.95 */
+  );
+  z-index: 0;
+}
+
+body.dark .hero::before {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 26, 51, 0.5),
+    rgba(0, 26, 51, 0.8)
+  );
+}
+
+/* HERO VIDEO — FIXED */
+#hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;        /* Behind overlay */
+  opacity: 0.4;       /* Slightly lowered for less washout */
+}
+
+/* Hide video on mobile for performance */
+@media (max-width: 768px) {
+  #hero-video {
+    display: none;
+  }
+}
+
+/* HERO CONTENT - added text-shadow for contrast */
+.hero-content {
+  max-width: 800px;
+  margin: calc(3 * var(--spacing)) auto 0;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Improves readability over gradient */
+}
+
+.hero-content h1 {
+  font-size: 2.4rem;
+  margin-bottom: var(--spacing);
+}
+
+.hero-content p {
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 650px;
+  margin: 0 auto calc(1.5 * var(--spacing));
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing);
+  flex-wrap: wrap;
+}
+
+.hero-stats {
+  margin-top: calc(2 * var(--spacing));
+  display: flex;
+  justify-content: center;
+  gap: calc(2 * var(--spacing));
+  flex-wrap: wrap;
+}
+
+.counter {
+  display: block;
+  font-size: 2rem;
+  color: var(--secondary);
+  font-weight: 700;
+}
+
+/* --------------------------------------------------
+   HEADER & NAVIGATION
+-------------------------------------------------- */
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing) calc(1.5 * var(--spacing));
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  color: var(--foreground);
+  position: relative;
+  z-index: 10;
+}
+
+body.dark .main-header {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.brand {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.nav-links {
+  display: flex;
+  gap: calc(1.5 * var(--spacing));
+}
+
+.nav-links a {
+  color: var(--foreground);
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+  color: var(--secondary);
+}
+
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--foreground);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Dark mode toggle - kept as previous (static in HTML) */
+.dark-switch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card);
+  border-radius: 999px;
+  padding: 0.15rem 0.5rem;
+  cursor: pointer;
+}
+
+.dark-switch input {
+  display: none;
+}
+
+.dark-icon {
+  font-size: 1rem;
+}
+
+/* Token badge */
+.badge-airlie {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  background: var(--primary);
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 0 10px rgba(29, 161, 242, 0.6);
+}
+
+.badge-airlie img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+/* --------------------------------------------------
+   TYPOGRAPHY
+-------------------------------------------------- */
+h2 {
+  color: var(--accent);
+  margin-bottom: 0.7rem;
+  font-size: 1.6rem;
+}
+
+h3 {
+  color: var(--secondary);
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+strong {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* --------------------------------------------------
+   BUTTONS
+-------------------------------------------------- */
+.section-button {
+  display: inline-block;
+  padding: 0.55rem 1.2rem;
+  background: var(--primary);
+  color: white;
+  border-radius: var(--radius);
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.section-button:hover {
+  transform: scale(1.05);
+}
+
+.section-button.alt {
+  background: var(--secondary);
+}
+
+/* Pill link */
+.pill-link {
+  display: inline-block;
+  padding: 0.25rem 0.9rem;
+  background: var(--secondary);
+  color: white;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* --------------------------------------------------
+   LAYOUT COMPONENTS
+-------------------------------------------------- */
+.three-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+/* TEAM SECTION */
+.team {
+  text-align: center;
+}
+
+.team-card {
+  padding: 1rem;
+}
+
+.team-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  margin: 0 auto 0.75rem;
+  border: 3px solid var(--background);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.team-photo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 16px rgba(0,0,0,0.25);
+}
+
+.team-card h3 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+  color: var(--secondary);
+}
+
+.team-card p {
+  color: var(--foreground);
+  opacity: 0.85;
+  font-size: 0.95rem;
+}
+
+/* Social icons */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.social-icons a {
+  background: var(--card);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  color: var(--foreground);
+}
+
+/* --------------------------------------------------
+   ANIMATIONS
+-------------------------------------------------- */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------
+   FOOTER
+-------------------------------------------------- */
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* --------------------------------------------------
+   RESPONSIVE
+-------------------------------------------------- */
+@media (max-width: 768px) {
+  .three-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-toggle {
+    display: inline-block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: var(--card);
+    padding: 1rem;
+    border-radius: var(--radius);
+    position: absolute;
+    top: 3.5rem;
+    right: 1rem;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .team-photo {
+    width: 100px;
+    height: 100px;
+  }
+}
