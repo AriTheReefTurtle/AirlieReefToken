@@ -70,7 +70,7 @@ a:hover, a:focus {
   position: relative;
   overflow: hidden;
   padding: calc(3 * var(--spacing)) var(--spacing) calc(4 * var(--spacing));
-  background: url("assets/reef.jpg") center/cover no-repeat;
+  background: url("reef.jpg") center/cover no-repeat;
   background-attachment: fixed;
   color: var(--foreground);
 }
@@ -422,4 +422,5 @@ footer {
     width: 100px;
     height: 100px;
   }
+
 }
